@@ -3,238 +3,329 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Impossible NO Button 😈</title>
+
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;
- min-height:100dvh;
- font-family:Arial,sans-serif;
- background:linear-gradient(135deg,#ff6b9b,#8b5cf6,#4f46e5);
- color:white;
- overflow:hidden;
+* {
+  box-sizing: border-box;
 }
-main{
- min-height:100dvh;
- display:flex;
- flex-direction:column;
- align-items:center;
- justify-content:center;
- text-align:center;
- padding:24px;
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff6b9b, #8b5cf6, #4f46e5);
+  color: white;
+  overflow: hidden;
 }
-h1{
- font-size:clamp(30px,7vw,52px);
- line-height:1.15;
- max-width:600px;
- margin:0 0 16px;
- text-shadow:0 4px 15px #0003;
+
+main {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
 }
-p{font-size:18px;max-width:450px}
-.buttons{
- display:flex;
- align-items:center;
- justify-content:center;
- gap:25px;
- margin-top:25px;
- min-height:110px;
+
+h1 {
+  font-size: clamp(30px, 7vw, 52px);
+  line-height: 1.15;
+  max-width: 600px;
+  margin: 0 0 16px;
+  text-shadow: 0 4px 15px #0003;
 }
-button{
- border:0;
- border-radius:18px;
- padding:17px 34px;
- font-size:20px;
- font-weight:bold;
- cursor:pointer;
- box-shadow:0 8px 22px #0003;
- touch-action:manipulation;
+
+p {
+  font-size: 18px;
+  max-width: 450px;
 }
-#yes{
- background:#22c55e;
- color:white;
- transition:transform .2s;
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 25px;
+  min-height: 110px;
 }
-#yes:active{transform:scale(.9)}
-#no{
- background:#ef4444;
- color:white;
- position:relative;
- z-index:10;
- transition:left .16s,top .16s,transform .16s;
+
+button {
+  border: 0;
+  border-radius: 18px;
+  padding: 17px 34px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 22px #0003;
+  touch-action: manipulation;
 }
-#message{
- min-height:35px;
- font-weight:bold;
- margin-top:25px;
- font-size:19px;
+
+#yes {
+  background: #22c55e;
+  color: white;
+  transition: transform .2s;
 }
-#counter{
- font-size:14px;
- opacity:.85;
- margin-top:10px;
+
+#yes:active {
+  transform: scale(.9);
 }
-#win{
- display:none;
- position:fixed;
- inset:0;
- z-index:50;
- background:linear-gradient(135deg,#16a34a,#059669);
- flex-direction:column;
- align-items:center;
- justify-content:center;
- text-align:center;
- padding:25px;
+
+#no {
+  background: #ef4444;
+  color: white;
+  position: relative;
+  z-index: 10;
+  transition: left .16s, top .16s, transform .16s;
 }
-#win h2{
- font-size:clamp(38px,9vw,65px);
- margin:0 0 15px;
+
+#message {
+  min-height: 35px;
+  font-weight: bold;
+  margin-top: 25px;
+  font-size: 19px;
 }
-#again{
- margin-top:25px;
- background:white;
- color:#047857;
+
+#counter {
+  font-size: 14px;
+  opacity: .85;
+  margin-top: 10px;
 }
-.confetti{
- position:fixed;
- top:-20px;
- width:10px;
- height:17px;
- z-index:100;
- pointer-events:none;
- animation:fall linear forwards;
+
+#trackingNotice {
+  position: fixed;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  opacity: .75;
+  pointer-events: none;
 }
-@keyframes fall{
- to{transform:translateY(110vh) rotate(900deg)}
+
+#win {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: linear-gradient(135deg, #16a34a, #059669);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+}
+
+#win h2 {
+  font-size: clamp(38px, 9vw, 65px);
+  margin: 0 0 15px;
+}
+
+#again {
+  margin-top: 25px;
+  background: white;
+  color: #047857;
+}
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  width: 10px;
+  height: 17px;
+  z-index: 100;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(900deg);
+  }
 }
 </style>
 </head>
+
 <body>
 
 <main>
-<h1>Am I your favorite person? 😏</h1>
-<p>Think carefully before answering.</p>
+  <h1>Am I your favorite person? 😏</h1>
+  <p>Think carefully before answering.</p>
 
-<div class="buttons">
-<button id="yes">YES 😎</button>
-<button id="no">NO 👎</button>
-</div>
+  <div class="buttons">
+    <button id="yes">YES 😎</button>
+    <button id="no">NO 👎</button>
+  </div>
 
-<div id="message">Go ahead. Press NO.</div>
-<div id="counter">Failed NO attempts: 0</div>
+  <div id="message">Go ahead. Press NO.</div>
+  <div id="counter">Failed NO attempts: 0</div>
+
+  <div id="trackingNotice">
+    YES clicks and NO attempts are logged anonymously.
+  </div>
 </main>
 
 <section id="win">
-<h2>HAHA, I KNEW IT! 😎</h2>
-<p>You finally admitted I'm your favorite person.</p>
-<p>There was never another option. 💀</p>
-<button id="again">Play Again 🔄</button>
+  <h2>HAHA, I KNEW IT! 😎</h2>
+  <p>You finally admitted I'm your favorite person.</p>
+  <p>There was never another option. 💀</p>
+  <button id="again">Play Again 🔄</button>
 </section>
 
 <script>
-const no=document.getElementById("no");
-const yes=document.getElementById("yes");
-const msg=document.getElementById("message");
-const counter=document.getElementById("counter");
-const win=document.getElementById("win");
-const again=document.getElementById("again");
+const no = document.getElementById("no");
+const yes = document.getElementById("yes");
+const msg = document.getElementById("message");
+const counter = document.getElementById("counter");
+const win = document.getElementById("win");
+const again = document.getElementById("again");
 
-let attempts=0;
-let lastMove=0;
+const trackingURL =
+  "https://script.google.com/macros/s/AKfycbzqxMnh0s9700U1I3Tzc5VGKXcpL7uhD6W2mi1PGh4rvEruHOuyAVW0jqyVYfFGA7hx/exec";
 
-const jokes=[
-"Nice try 💀",
-"Too slow 😂",
-"Missed again.",
-"Still trying?",
-"Just press YES.",
-"NO doesn't like you.",
-"This is getting embarrassing.",
-"Your accuracy is concerning.",
-"Even the button is ignoring you.",
-"Skill issue 👎",
-"Give up already.",
-"NO has left the chat.",
-"You're really committed to this.",
-"That's enough exercise for today."
+let attempts = 0;
+let lastMove = 0;
+
+const jokes = [
+  "Nice try 💀",
+  "Too slow 😂",
+  "Missed again.",
+  "Still trying?",
+  "Just press YES.",
+  "NO doesn't like you.",
+  "This is getting embarrassing.",
+  "Your accuracy is concerning.",
+  "Even the button is ignoring you.",
+  "Skill issue 👎",
+  "Give up already.",
+  "NO has left the chat.",
+  "You're really committed to this.",
+  "That's enough exercise for today."
 ];
 
-function escapeNo(){
- const now=Date.now();
- if(now-lastMove<130)return;
- lastMove=now;
- attempts++;
+function escapeNo() {
+  const now = Date.now();
 
- const width=no.offsetWidth;
- const height=no.offsetHeight;
- const pad=12;
+  if (now - lastMove < 130) return;
 
- // Move within the visible screen.
- const maxX=Math.max(pad,innerWidth-width-pad);
- const maxY=Math.max(pad,innerHeight-height-pad);
+  lastMove = now;
+  attempts++;
 
- const x=pad+Math.random()*(maxX-pad);
- const y=pad+Math.random()*(maxY-pad);
+  const width = no.offsetWidth;
+  const height = no.offsetHeight;
+  const pad = 12;
 
- no.style.position="fixed";
- no.style.left=x+"px";
- no.style.top=y+"px";
+  const maxX = Math.max(pad, innerWidth - width - pad);
+  const maxY = Math.max(pad, innerHeight - height - pad);
 
- // Shrink gradually, but remain visible.
- const scale=Math.max(.55,1-attempts*.035);
- no.style.transform="scale("+scale+")";
+  const x = pad + Math.random() * (maxX - pad);
+  const y = pad + Math.random() * (maxY - pad);
 
- msg.textContent=jokes[(attempts-1)%jokes.length];
- counter.textContent="Failed NO attempts: "+attempts;
+  no.style.position = "fixed";
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+
+  const scale = Math.max(.55, 1 - attempts * .035);
+  no.style.transform = "scale(" + scale + ")";
+
+  msg.textContent = jokes[(attempts - 1) % jokes.length];
+
+  counter.textContent =
+    "Failed NO attempts: " + attempts;
 }
 
-// Desktop: dodge the mouse.
-no.addEventListener("mouseenter",escapeNo);
+// Desktop mouse interaction
+no.addEventListener("mouseenter", escapeNo);
 
-// Mobile: escape before the tap completes.
-no.addEventListener("pointerdown",e=>{
- e.preventDefault();
- escapeNo();
+// Mobile touch interaction
+no.addEventListener("pointerdown", e => {
+  e.preventDefault();
+  escapeNo();
 });
 
-// Backup for keyboard/click interactions.
-no.addEventListener("click",e=>{
- e.preventDefault();
- escapeNo();
+// Backup click interaction
+no.addEventListener("click", e => {
+  e.preventDefault();
+  escapeNo();
 });
 
-function celebrate(){
- win.style.display="flex";
- for(let i=0;i<100;i++){
-  const piece=document.createElement("div");
-  piece.className="confetti";
-  piece.style.left=Math.random()*100+"vw";
-  piece.style.background=[
-   "#ffeb3b","#ff4081","#00e5ff",
-   "#ffffff","#a78bfa"
-  ][Math.floor(Math.random()*5)];
-  piece.style.animationDuration=
-   (2+Math.random()*3)+"s";
-  piece.style.animationDelay=
-   Math.random()*1.5+"s";
-  document.body.appendChild(piece);
-  setTimeout(()=>piece.remove(),6500);
- }
+// Record YES click in Google Sheets
+function trackYesClick() {
+  const data = new URLSearchParams();
+
+  data.append("attempts", attempts.toString());
+
+  fetch(trackingURL, {
+    method: "POST",
+    mode: "no-cors",
+    body: data,
+    keepalive: true
+  }).catch(error => {
+    console.error("Tracking request failed:", error);
+  });
 }
 
-yes.addEventListener("click",celebrate);
+// YES button celebration
+function celebrate() {
 
-again.addEventListener("click",()=>{
- win.style.display="none";
- attempts=0;
- lastMove=0;
- no.style.position="relative";
- no.style.left="auto";
- no.style.top="auto";
- no.style.transform="scale(1)";
- msg.textContent="Go ahead. Press NO.";
- counter.textContent="Failed NO attempts: 0";
+  // Send tracking data
+  trackYesClick();
+
+  // Show victory screen
+  win.style.display = "flex";
+
+  // Generate confetti
+  for (let i = 0; i < 100; i++) {
+    const piece = document.createElement("div");
+
+    piece.className = "confetti";
+
+    piece.style.left =
+      Math.random() * 100 + "vw";
+
+    piece.style.background = [
+      "#ffeb3b",
+      "#ff4081",
+      "#00e5ff",
+      "#ffffff",
+      "#a78bfa"
+    ][Math.floor(Math.random() * 5)];
+
+    piece.style.animationDuration =
+      (2 + Math.random() * 3) + "s";
+
+    piece.style.animationDelay =
+      Math.random() * 1.5 + "s";
+
+    document.body.appendChild(piece);
+
+    setTimeout(() => piece.remove(), 6500);
+  }
+}
+
+yes.addEventListener("click", celebrate);
+
+// Reset game
+again.addEventListener("click", () => {
+
+  win.style.display = "none";
+
+  attempts = 0;
+  lastMove = 0;
+
+  no.style.position = "relative";
+  no.style.left = "auto";
+  no.style.top = "auto";
+  no.style.transform = "scale(1)";
+
+  msg.textContent = "Go ahead. Press NO.";
+
+  counter.textContent =
+    "Failed NO attempts: 0";
 });
 </script>
+
 </body>
 </html>
+
